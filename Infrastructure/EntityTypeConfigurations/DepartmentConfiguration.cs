@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace ComparerBasic.Infrastructure.EntityTypeConfigurations;
 
-internal class DepartmentConfiguration : IEntityTypeConfiguration<Department>
+internal class DepartmentConfiguration : IEntityTypeConfiguration<ComparedFileInfo>
 {
-    public void Configure(EntityTypeBuilder<Department> builder)
+    public void Configure(EntityTypeBuilder<ComparedFileInfo> builder)
     {
         builder.ToTable(nameof(ComparerContext.Departments));
         builder.HasKey(entity => entity.Id);
