@@ -3,9 +3,9 @@
 namespace ComparerBasic.Domain;
 
 /// <summary>
-/// Department
+/// ComparedFileInfo
 /// </summary>
-public class Department
+public class ComparedFileInfo
 {
     /// <summary>
     /// Id
@@ -15,7 +15,7 @@ public class Department
     /// <summary>
     /// Name
     /// </summary>
-    public string Name { get; init; } = string.Empty;
+    public string FileName { get; init; } = string.Empty;
 
     /// <summary>
     /// Floor

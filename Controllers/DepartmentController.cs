@@ -1,6 +1,6 @@
 using ComparerBasic.Domain;
 using ComparerBasic.DTOs;
-using ComparerBasic.Logic.Commands;
+// using ComparerBasic.Logic.Commands;
 using ComparerBasic.Logic.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -21,47 +21,65 @@ public class DepartmentController : ControllerBase
     // get list, create, update, delete
 
     /// <summary>
-    /// Get Department by id
+    /// Compare 2 files
     /// </summary>
-    /// <returns>Department</returns>
+    /// <returns>Result</returns>
     /// <response code="200">Success</response>
-    [HttpGet("{id}")]
-    public async Task<ActionResult<Department>> Get(Guid id)
+    [HttpGet]
+    public async Task<ActionResult<bool>> CompareTwoFiles ([FromQuery(Name = "FileName1")]string fileName1, [FromQuery(Name = "FileName2")] string fileName2)
     {
-        var query = new GetDepartmentQuery(){Id = id};
-        var dto = await _mediator.Send(query);
-        return Ok(dto);
+        var result = false;
+        var query = new CompareTwoFilesQuery(
+            FileName1: fileName1,
+            FileName2: fileName2
+        );
+        result = await _mediator.Send(query);
+        return Ok(result);
     }
-    /// <summary>
-    /// Get all departments list
-    /// </summary>
-    /// <returns>Department List</returns>
-    /// <response code="200">Success</response>
-    [HttpGet] 
-    [ProducesResponseType(StatusCodes.Status200OK)]
-    public async Task<ActionResult<IQueryable>> GetAll()
-    { 
-            var query = new GetDepartmentListQuery();
     
-            IQueryable departments = await _mediator.Send(query);
-            return Ok(departments); 
-        }
-    
-    /// <summary>
-    /// Create Department
-    /// </summary>
-    /// <returns>Department</returns>
-    /// <response code="200">Success</response>
-    /// <response code="401">If the user is unauthorized</response>
-    [HttpPost]
-    public async Task<ActionResult<Department>> CreateDepartment(CreateDepartmentDto request)
-    {
-        var command = new CreateDepartmentCommand(
-            Name: request.Name,
-            Floor: request.Floor);
-        var dto = await _mediator.Send(command);
-        return Ok(dto);
-    }
+    // /// <summary>
+    // /// Get ComparedFileInfo by id
+    // /// </summary>
+    // /// <returns>ComparedFileInfo</returns>
+    // /// <response code="200">Success</response>
+    // [HttpGet("{id}")]
+    // public async Task<ActionResult<ComparedFileInfo>> Get(Guid id)
+    // {
+    //     var query = new GetDepartmentQuery(){Id = id};
+    //     var dto = await _mediator.Send(query);
+    //     return Ok(dto);
+    // }
+    //
+    // /// <summary>
+    // /// Get all departments list
+    // /// </summary>
+    // /// <returns>ComparedFileInfo List</returns>
+    // /// <response code="200">Success</response>
+    // [HttpGet] 
+    // [ProducesResponseType(StatusCodes.Status200OK)]
+    // public async Task<ActionResult<IQueryable>> GetAll()
+    // { 
+    //         var query = new GetDepartmentListQuery();
+    //
+    //         IQueryable departments = await _mediator.Send(query);
+    //         return Ok(departments); 
+    //     }
+    //
+    // /// <summary>
+    // /// Create ComparedFileInfo
+    // /// </summary>
+    // /// <returns>ComparedFileInfo</returns>
+    // /// <response code="200">Success</response>
+    // /// <response code="401">If the user is unauthorized</response>
+    // [HttpPost]
+    // public async Task<ActionResult<ComparedFileInfo>> CreateDepartment(CreateDepartmentDto request)
+    // {
+    //     var command = new CreateDepartmentCommand(
+    //         Name: request.Name,
+    //         Floor: request.Floor);
+    //     var dto = await _mediator.Send(command);
+    //     return Ok(dto);
+    // }
     
     // /// <summary>
     // /// Update ElectricalHazardousWorkPermit
