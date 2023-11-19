@@ -6,7 +6,6 @@ namespace ComparerBasic.Infrastructure;
 public class ComparerContext : 
     DbContext, 
     IComparerContext
-
 {
     public DbSet<SingleFileInfo> SingleFileInfos => Set<SingleFileInfo>();
     
