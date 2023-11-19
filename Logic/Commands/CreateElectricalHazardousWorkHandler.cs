@@ -7,10 +7,10 @@
 //     public record CreateDepartmentCommand(
 //         string Name ,
 //         int Floor 
-//         ) : IRequest<ComparedFileInfo>;
+//         ) : IRequest<SingleFileInfo>;
 //
 //     public class CreateDepartmentHandler :
-//         IRequestHandler<CreateDepartmentCommand, ComparedFileInfo>
+//         IRequestHandler<CreateDepartmentCommand, SingleFileInfo>
 //     {
 //         // private readonly IGuidGenerator _guidGenerator;
 //         private readonly IComparerContext _dbContext;
@@ -20,16 +20,16 @@
 //             _dbContext = dbContext;
 //         }
 //
-//         public async Task<ComparedFileInfo> Handle(CreateDepartmentCommand request, CancellationToken cancellationToken)
+//         public async Task<SingleFileInfo> Handle(CreateDepartmentCommand request, CancellationToken cancellationToken)
 //         {
-//             var department = new ComparedFileInfo()
+//             var department = new SingleFileInfo()
 //             {
 //                 Id = Guid.NewGuid(),
 //                 Name = request.Name,
 //                 Floor = request.Floor
 //             };
 //             
-//             await _dbContext.Departments.AddAsync(department, cancellationToken);
+//             await _dbContext.SingleFileInfos.AddAsync(department, cancellationToken);
 //
 //             try
 //             {

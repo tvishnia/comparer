@@ -6,9 +6,8 @@ namespace ComparerBasic.Infrastructure;
 public class ComparerContext : 
     DbContext, 
     IComparerContext
-
 {
-    public DbSet<ComparedFileInfo> Departments => Set<ComparedFileInfo>();
+    public DbSet<SingleFileInfo> SingleFileInfos => Set<SingleFileInfo>();
     
     public ComparerContext(DbContextOptions options)
         : base(options)

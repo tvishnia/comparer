@@ -5,9 +5,9 @@
 //
 // namespace ComparerBasic.Logic.Queries;
 //
-// public record GetDepartmentListQuery() : IRequest<IQueryable<ComparedFileInfo>>;
+// public record GetDepartmentListQuery() : IRequest<IQueryable<SingleFileInfo>>;
 //
-// public class GetDepartmentListQueryHandler : IRequestHandler<GetDepartmentListQuery, IQueryable<ComparedFileInfo>>
+// public class GetDepartmentListQueryHandler : IRequestHandler<GetDepartmentListQuery, IQueryable<SingleFileInfo>>
 // {
 //     private readonly IComparerContext _dbContext;
 //     
@@ -16,9 +16,9 @@
 //         _dbContext = dbContext;
 //     }
 //     
-//     public async Task<IQueryable<ComparedFileInfo>> Handle(GetDepartmentListQuery query, CancellationToken cancellationToken)
+//     public async Task<IQueryable<SingleFileInfo>> Handle(GetDepartmentListQuery query, CancellationToken cancellationToken)
 //     {
-//         var list = _dbContext.Departments;
+//         var list = _dbContext.SingleFileInfos;
 //         
 //         return await Task.FromResult(list); 
 //     } 

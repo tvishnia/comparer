@@ -1,7 +1,7 @@
 ﻿namespace ComparerBasic.DTOs;
 
 /// <summary>
-/// ComparedFileInfo
+/// SingleFileInfo
 /// </summary>
 public class CreateDepartmentDto
 {
