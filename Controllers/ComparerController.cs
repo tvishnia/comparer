@@ -10,11 +10,11 @@ namespace ComparerBasic.Controllers;
 [Produces("application/json")]
 [ApiController]
 [Route("api/[controller]")]
-public class DepartmentController : ControllerBase
+public class ComparerController : ControllerBase
 {
     private readonly IMediator _mediator;
     
-    public DepartmentController(IMediator mediator)
+    public ComparerController(IMediator mediator)
     {
         _mediator = mediator;
     }
@@ -38,12 +38,12 @@ public class DepartmentController : ControllerBase
     }
     
     // /// <summary>
-    // /// Get ComparedFileInfo by id
+    // /// Get SingleFileInfo by id
     // /// </summary>
-    // /// <returns>ComparedFileInfo</returns>
+    // /// <returns>SingleFileInfo</returns>
     // /// <response code="200">Success</response>
     // [HttpGet("{id}")]
-    // public async Task<ActionResult<ComparedFileInfo>> Get(Guid id)
+    // public async Task<ActionResult<SingleFileInfo>> Get(Guid id)
     // {
     //     var query = new GetDepartmentQuery(){Id = id};
     //     var dto = await _mediator.Send(query);
@@ -53,7 +53,7 @@ public class DepartmentController : ControllerBase
     // /// <summary>
     // /// Get all departments list
     // /// </summary>
-    // /// <returns>ComparedFileInfo List</returns>
+    // /// <returns>SingleFileInfo List</returns>
     // /// <response code="200">Success</response>
     // [HttpGet] 
     // [ProducesResponseType(StatusCodes.Status200OK)]
@@ -66,13 +66,13 @@ public class DepartmentController : ControllerBase
     //     }
     //
     // /// <summary>
-    // /// Create ComparedFileInfo
+    // /// Create SingleFileInfo
     // /// </summary>
-    // /// <returns>ComparedFileInfo</returns>
+    // /// <returns>SingleFileInfo</returns>
     // /// <response code="200">Success</response>
     // /// <response code="401">If the user is unauthorized</response>
     // [HttpPost]
-    // public async Task<ActionResult<ComparedFileInfo>> CreateDepartment(CreateDepartmentDto request)
+    // public async Task<ActionResult<SingleFileInfo>> CreateDepartment(CreateDepartmentDto request)
     // {
     //     var command = new CreateDepartmentCommand(
     //         Name: request.Name,

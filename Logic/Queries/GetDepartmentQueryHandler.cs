@@ -5,12 +5,12 @@
 //
 // namespace ComparerBasic.Logic.Queries;
 //
-// public class GetDepartmentQuery : IRequest<ComparedFileInfo>
+// public class GetDepartmentQuery : IRequest<SingleFileInfo>
 // {
 //     public Guid Id { get; init; }
 // }
 //
-// public class GetDepartmentQueryHandler : IRequestHandler<GetDepartmentQuery, ComparedFileInfo>
+// public class GetDepartmentQueryHandler : IRequestHandler<GetDepartmentQuery, SingleFileInfo>
 // {
 //     private readonly IComparerContext _dbContext;
 //     
@@ -19,13 +19,13 @@
 //         _dbContext = dbContext;
 //     }
 //     
-//     public async Task<ComparedFileInfo> Handle(GetDepartmentQuery request, CancellationToken cancellationToken)
+//     public async Task<SingleFileInfo> Handle(GetDepartmentQuery request, CancellationToken cancellationToken)
 //     {
-//         var entity = await _dbContext.Departments.FirstOrDefaultAsync(department => department.Id == request.Id, cancellationToken);
+//         var entity = await _dbContext.SingleFileInfos.FirstOrDefaultAsync(department => department.Id == request.Id, cancellationToken);
 //
 //         if (entity == null)
 //         {
-//             throw new Exception($"ComparedFileInfo not found {request.Id}");
+//             throw new Exception($"SingleFileInfo not found {request.Id}");
 //         }
 //             
 //         return entity; 

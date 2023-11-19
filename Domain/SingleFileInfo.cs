@@ -3,9 +3,9 @@
 namespace ComparerBasic.Domain;
 
 /// <summary>
-/// ComparedFileInfo
+/// SingleFileInfo
 /// </summary>
-public class ComparedFileInfo
+public class SingleFileInfo
 {
     /// <summary>
     /// Id
@@ -18,7 +18,7 @@ public class ComparedFileInfo
     public string FileName { get; init; } = string.Empty;
 
     /// <summary>
-    /// Floor
+    /// Hash sum
     /// </summary>
-    public int Floor { get; init; }
+    public string? HashSum { get; init; }
 }

@@ -8,7 +8,7 @@ public class ComparerContext :
     IComparerContext
 
 {
-    public DbSet<ComparedFileInfo> Departments => Set<ComparedFileInfo>();
+    public DbSet<SingleFileInfo> SingleFileInfos => Set<SingleFileInfo>();
     
     public ComparerContext(DbContextOptions options)
         : base(options)
