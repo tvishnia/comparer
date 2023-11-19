@@ -291,3 +291,5 @@ launchSettings.json
 docker-compose.yml
 
 appsettings.staging.json
+# database files
+/data/*.*
