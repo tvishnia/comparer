@@ -25,14 +25,27 @@ namespace ComparerBasic.Logic.Commands
         {
             if (String.IsNullOrEmpty(request.FileName))
             {
-                throw new Exception("File name should not be empty.");
+                Console.WriteLine("File name should not be empty.");
+                return null;
             }
 
             var fileName = request.FileName.TrimStart();
             // add check in db if file already exists
             var exists = await _dbContext.SingleFileInfos
-                .FirstOrDefaultAsync(fileInfo => fileInfo.FileName.Equals(fileName, StringComparison.CurrentCultureIgnoreCase), cancellationToken);
-            var file = new FileInfo(request.FileName);
+                .FirstOrDefaultAsync(fileInfo => fileInfo.FileName.Equals(fileName), cancellationToken);
+            if (exists != null)
+            {
+                Console.WriteLine("File name already in database: " + fileName);
+                return null;
+            }
+
+            var file= new FileInfo(request.FileName);
+            if (!file.Exists)
+            {
+                Console.WriteLine("File does not exist: " + file.FullName);
+                return null;
+            }
+
             var fileHash = GetHash(file);
             var singleFileInfo = new SingleFileInfo()
             {
@@ -62,7 +75,7 @@ namespace ComparerBasic.Logic.Commands
         private static string? GetHash(FileInfo file)
         {
             var sha256Hash = SHA256.Create();
-            return sha256Hash.ComputeHash(file.OpenRead()).ToString();
+            return BitConverter.ToString(sha256Hash.ComputeHash(file.OpenRead()));
         }
     }
 }
