@@ -13,7 +13,7 @@ public class SingleFileInfo
     public Guid Id { get; init; }
 
     /// <summary>
-    /// Name
+    /// FileName
     /// </summary>
     public string FileName { get; init; } = string.Empty;
 
