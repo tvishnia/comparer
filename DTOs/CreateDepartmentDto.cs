@@ -6,7 +6,7 @@
 public class CreateDepartmentDto
 {
     /// <summary>
-    /// Name
+    /// FileName
     /// </summary>
     public string Name { get; init; } = string.Empty;
 
