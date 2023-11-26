@@ -1,5 +1,6 @@
 using ComparerBasic.Domain;
 using ComparerBasic.DTOs;
+using ComparerBasic.Logic.Commands;
 // using ComparerBasic.Logic.Commands;
 using ComparerBasic.Logic.Queries;
 using MediatR;
@@ -37,6 +38,19 @@ public class ComparerController : ControllerBase
         return Ok(result);
     }
     
+    /// <summary>
+    /// Create SingleFileInfo
+    /// </summary>
+    /// <returns>SingleFileInfo</returns>
+    /// <response code="200">Success</response>
+    [HttpPost]
+    public async Task<ActionResult<SingleFileInfo>> CreateSingleFileInfo(string request)
+    {
+        var command = new CreateSingleFileInfoCommand(FileName: request);
+        var result = await _mediator.Send(command);
+        return Ok(result);
+    }
+    
     // /// <summary>
     // /// Get SingleFileInfo by id
     // /// </summary>
@@ -64,22 +78,6 @@ public class ComparerController : ControllerBase
     //         IQueryable departments = await _mediator.Send(query);
     //         return Ok(departments); 
     //     }
-    //
-    // /// <summary>
-    // /// Create SingleFileInfo
-    // /// </summary>
-    // /// <returns>SingleFileInfo</returns>
-    // /// <response code="200">Success</response>
-    // /// <response code="401">If the user is unauthorized</response>
-    // [HttpPost]
-    // public async Task<ActionResult<SingleFileInfo>> CreateDepartment(CreateDepartmentDto request)
-    // {
-    //     var command = new CreateSingleFileInfoCommand(
-    //         FileName: request.FileName,
-    //         Floor: request.Floor);
-    //     var dto = await _mediator.Send(command);
-    //     return Ok(dto);
-    // }
     
     // /// <summary>
     // /// Update ElectricalHazardousWorkPermit
