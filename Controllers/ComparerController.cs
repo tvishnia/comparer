@@ -74,8 +74,8 @@ public class ComparerController : ControllerBase
     // [HttpPost]
     // public async Task<ActionResult<SingleFileInfo>> CreateDepartment(CreateDepartmentDto request)
     // {
-    //     var command = new CreateDepartmentCommand(
-    //         Name: request.Name,
+    //     var command = new CreateSingleFileInfoCommand(
+    //         FileName: request.FileName,
     //         Floor: request.Floor);
     //     var dto = await _mediator.Send(command);
     //     return Ok(dto);
@@ -465,7 +465,7 @@ public class ComparerController : ControllerBase
     // [HttpPost("AddApplication")]
     // public async Task<ActionResult<ElectricalHazardousWorkPermitVm>> AddElectricalHazardousWorkPermitApplication(AddElectricalHazardousWorkPermitApplicationDto request)
     // {
-    //     var command = new AddElectricalHazardousWorkPermitApplicationCommand(request.WorkPermitId, request.Name, request.ApplicationFiles);
+    //     var command = new AddElectricalHazardousWorkPermitApplicationCommand(request.WorkPermitId, request.FileName, request.ApplicationFiles);
     //     var dto = await _mediator.Send(command);
     //     var vm = _electricalHazardousWorkPermitService.DtoToVm(dto);
     //     return Ok(vm);
@@ -479,7 +479,7 @@ public class ComparerController : ControllerBase
     // [HttpPut("UpdateApplication")]
     // public async Task<ActionResult<ElectricalHazardousWorkPermitVm>> UpdateElectricalHazardousWorkPermitApplication(UpdateElectricalHazardousWorkPermitApplicatioDto request)
     // {
-    //     var command = new UpdateElectricalHazardousWorkPermitApplicationCommand(request.Id, request.Name, request.ApplicationFiles);
+    //     var command = new UpdateElectricalHazardousWorkPermitApplicationCommand(request.Id, request.FileName, request.ApplicationFiles);
     //     var dto = await _mediator.Send(command);
     //     var vm = _electricalHazardousWorkPermitService.DtoToVm(dto);
     //     return Ok(vm);
@@ -508,7 +508,7 @@ public class ComparerController : ControllerBase
     // {
     //     var command = new UpdateElectricalHazardousWorkPermitWorkflowStatusCommand(
     //         request.WorkPermitId,
-    //         request.Name,
+    //         request.FileName,
     //         request.StepDescription ?? string.Empty);
     //     var dto = await _mediator.Send(command);
     //     var vm = _electricalHazardousWorkPermitService.DtoToVm(dto);
