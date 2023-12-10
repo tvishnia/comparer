@@ -6,10 +6,10 @@ using Microsoft.EntityFrameworkCore;
 namespace ComparerBasic.Logic.Queries;
 
 public record GetFileInfosListQuery(
-    int PageNum,
-    int PageSize
-) : IRequest<IQueryable<SingleFileInfo>>;
-public class GetFileInfosListQueryHandler : IRequestHandler<GetFileInfosListQuery, IQueryable<SingleFileInfo>>
+    int PageNum = 1,
+    int PageSize = 100
+) : IRequest<IReadOnlyCollection<SingleFileInfo>>;
+public class GetFileInfosListQueryHandler : IRequestHandler<GetFileInfosListQuery, IReadOnlyCollection<SingleFileInfo>>
 {
     private readonly IComparerContext _dbContext;
     
@@ -18,11 +18,15 @@ public class GetFileInfosListQueryHandler : IRequestHandler<GetFileInfosListQuer
         _dbContext = dbContext;
     }
     
-    public async Task<IQueryable<SingleFileInfo>> Handle(GetFileInfosListQuery query, CancellationToken cancellationToken)
+    public async Task<IReadOnlyCollection<SingleFileInfo>> Handle(GetFileInfosListQuery query, CancellationToken cancellationToken)
     {
-        var list = _dbContext.SingleFileInfos.Skip(query.PageNum * query.PageSize).Take(query.PageSize);
+        var list = await _dbContext.SingleFileInfos
+            .OrderBy(x => x.FileName)
+            .Skip((query.PageNum - 1) * query.PageSize)
+            .Take(query.PageSize)
+            .ToListAsync(cancellationToken);
         
-        return await Task.FromResult(list); 
+        return list; 
     } 
 }
 

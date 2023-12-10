@@ -55,11 +55,8 @@ public class ComparerController : ControllerBase
     /// <returns>SingleFileInfos</returns>
     /// <response code="200">Success</response>
     [HttpGet("/Paged")]
-    public async Task<ActionResult<SingleFileInfo>> GetAll([FromQuery(Name = "pageNum")]int pageNum, [FromQuery(Name = "pageSize")]int pageSize)
+    public async Task<ActionResult<SingleFileInfo>> GetAll([FromQuery]GetFileInfosListQuery query)
     {
-        var query = new GetFileInfosListQuery(
-            PageNum: pageNum,
-            PageSize: pageSize){};
         var dto = await _mediator.Send(query);
         return Ok(dto);
     }
