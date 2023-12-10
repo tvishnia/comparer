@@ -51,7 +51,8 @@ namespace ComparerBasic.Logic.Commands
             {
                 Id = Guid.NewGuid(),
                 FileName = request.FileName,
-                HashSum = fileHash // change here
+                HashSum = fileHash, // change here
+                FileStatus = FileStatuses.Active
             };
             
             await _dbContext.SingleFileInfos.AddAsync(singleFileInfo, cancellationToken);

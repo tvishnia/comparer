@@ -21,4 +21,16 @@ public class SingleFileInfo
     /// Hash sum
     /// </summary>
     public string? HashSum { get; init; }
+
+    /// <summary>
+    /// File status
+    /// </summary>
+    public FileStatuses FileStatus { get; set; }
+}
+
+public enum FileStatuses
+{
+    Active,
+    Missing,
+    Deleted
 }
