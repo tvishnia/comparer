@@ -1,7 +1,5 @@
 using ComparerBasic.Domain;
-using ComparerBasic.DTOs;
 using ComparerBasic.Logic.Commands;
-// using ComparerBasic.Logic.Commands;
 using ComparerBasic.Logic.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -51,19 +49,21 @@ public class ComparerController : ControllerBase
         return Ok(result);
     }
     
-    // /// <summary>
-    // /// Get SingleFileInfo by id
-    // /// </summary>
-    // /// <returns>SingleFileInfo</returns>
-    // /// <response code="200">Success</response>
-    // [HttpGet("{id}")]
-    // public async Task<ActionResult<SingleFileInfo>> Get(Guid id)
-    // {
-    //     var query = new GetDepartmentQuery(){Id = id};
-    //     var dto = await _mediator.Send(query);
-    //     return Ok(dto);
-    // }
-    //
+    /// <summary>
+    /// Get all SingleFileInfos with pagination
+    /// </summary>
+    /// <returns>SingleFileInfos</returns>
+    /// <response code="200">Success</response>
+    [HttpGet("/Paged")]
+    public async Task<ActionResult<SingleFileInfo>> GetAll([FromQuery(Name = "pageNum")]int pageNum, [FromQuery(Name = "pageSize")]int pageSize)
+    {
+        var query = new GetFileInfosListQuery(
+            PageNum: pageNum,
+            PageSize: pageSize){};
+        var dto = await _mediator.Send(query);
+        return Ok(dto);
+    }
+    
     // /// <summary>
     // /// Get all departments list
     // /// </summary>
