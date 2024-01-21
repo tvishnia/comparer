@@ -1,4 +1,6 @@
-﻿namespace ComparerBasic.DTOs;
+﻿using ComparerBasic.Domain;
+
+namespace ComparerBasic.DTOs;
 
 /// <summary>
 /// FolderLog
@@ -10,15 +12,13 @@ public class FolderLogDto
     /// </summary>
     public string FolderName { get; init; } = string.Empty;
     
-    
+    /// <summary>
+    /// File status
+    /// </summary>
+    public FolderStatuses FolderStatus { get; set; }
 
     /// <summary>
     /// Floor
     /// </summary>
     public List<string> SubFolderName { get; init; } = null!;
-}
-public enum FolderStatuses
-{
-    Ok,
-    Missing,
 }

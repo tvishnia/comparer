@@ -24,6 +24,23 @@ namespace ComparerBasic.Logic.Commands
 
         public async Task<FolderLogDto> Handle(GetFolderDataFromDiskCommand request, CancellationToken cancellationToken)
         {
+            var dirs = new Stack<DirectoryInfo>();
+            dirs.Push(new DirectoryInfo(request.FolderName));
+            
+            //ToDo: check that the folder is not id db in status Processed
+            
+            var files = new List<FileInfo>();
+            while (dirs.Count != 0)
+            {
+                var dir = dirs.Pop();
+                if (!dir.Exists) continue;
+                Console.WriteLine("Reading directory " + dir.FullName);
+                files.AddRange(dir.GetFiles());
+                foreach (var newDir in dir.GetDirectories())
+                {
+                    dirs.Push(newDir);
+                }
+            }
             // if (String.IsNullOrEmpty(request.FileName))
             // {
             //     Console.WriteLine("File name should not be empty.");
