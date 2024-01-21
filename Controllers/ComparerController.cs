@@ -1,4 +1,5 @@
 using ComparerBasic.Domain;
+using ComparerBasic.DTOs;
 using ComparerBasic.Logic.Commands;
 using ComparerBasic.Logic.Queries;
 using MediatR;
@@ -61,6 +62,21 @@ public class ComparerController : ControllerBase
         return Ok(dto);
     }
     
+    
+    /// <summary>
+    /// Get folder info from disk
+    /// </summary>
+    /// <returns>FolderLogDto</returns>
+    /// <response code="200">Success</response>
+    /// <response code="401">If the user is unauthorized</response>
+    [HttpPost]
+    public async Task<ActionResult<FolderLogDto>> GetFolder(string request)
+    {
+        var command = new GetFolderDataFromDiskCommand(FolderName: request);
+        var dto = await _mediator.Send(command);
+        return Ok(dto);
+    }
+    
     // /// <summary>
     // /// Get all departments list
     // /// </summary>
@@ -76,30 +92,6 @@ public class ComparerController : ControllerBase
     //         return Ok(departments); 
     //     }
     
-    // /// <summary>
-    // /// Update ElectricalHazardousWorkPermit
-    // /// </summary>
-    // /// <returns>ElectricalHazardousWorkPermitVm</returns>
-    // /// <response code="200">Success</response>
-    // /// <response code="401">If the user is unauthorized</response>
-    // [HttpPut]
-    // public async Task<ActionResult<ElectricalHazardousWorkPermitVm>> UpdateElectricalHazardousWorkPermit(UpdateElectricalHazardousWorkPermitExtDto request)
-    // {
-    //     var command = new UpdateElectricalHazardousWorkPermitCommand()
-    //     {
-    //         Id = request.Id,
-    //         Status = request.Status,
-    //         WorkerId = request.WorkerId,
-    //         ResponsibleId = request.ResponsibleId,
-    //         DepartmentId = request.DepartmentId,
-    //         StartDate = request.StartDate,
-    //         EndDate = request.EndDate,
-    //         ObjectId = request.ObjectId
-    //     };
-    //     var dto = await _mediator.Send(command);
-    //     var vm = _electricalHazardousWorkPermitService.DtoToVm(dto);
-    //     return Ok(vm);
-    // }
     //
     // /// <summary>
     // /// Update ElectricalHazardousWorkPermit MainEvents and Ppe
