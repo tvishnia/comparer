@@ -13,12 +13,18 @@ public class FolderLogDto
     public string FolderName { get; init; } = string.Empty;
     
     /// <summary>
-    /// File status
+    /// Folder status
     /// </summary>
     public FolderStatuses FolderStatus { get; set; }
 
     /// <summary>
-    /// Floor
+    /// Subfolders
     /// </summary>
-    public List<string> SubFolderName { get; init; } = null!;
+    public List<string> SubFolderNames { get; init; } = null!;
+    
+    /// <summary>
+    /// Errors
+    /// </summary>
+    public List<string> Errors { get; init; } = null!;
+
 }

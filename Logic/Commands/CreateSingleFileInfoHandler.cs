@@ -39,7 +39,7 @@ namespace ComparerBasic.Logic.Commands
                 return null;
             }
 
-            var file= new FileInfo(request.FileName);
+            var file = new FileInfo(request.FileName);
             if (!file.Exists)
             {
                 Console.WriteLine("File does not exist: " + file.FullName);

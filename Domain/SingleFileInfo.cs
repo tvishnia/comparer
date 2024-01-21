@@ -32,5 +32,7 @@ public enum FileStatuses
 {
     Active,
     Missing,
-    Deleted
+    Deleted,
+    DontExist,
+    ToCount
 }
