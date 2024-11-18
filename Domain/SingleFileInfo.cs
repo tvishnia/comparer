@@ -30,7 +30,7 @@ public class SingleFileInfo
     /// <summary>
     /// GroupId
     /// </summary>
-    public Guid GroupId { get; init; }
+    public Guid? GroupId { get; set; }
 }
 
 public enum FileStatuses

@@ -1,4 +1,5 @@
 using ComparerBasic.Domain;
+using ComparerBasic.DTOs;
 using ComparerBasic.Logic.Commands;
 using ComparerBasic.Logic.Queries;
 using MediatR;
@@ -60,6 +61,21 @@ public class ComparerController : ControllerBase
         var dto = await _mediator.Send(query);
         return Ok(dto);
     }
+    
+    
+    // /// <summary>
+    // /// Get folder info from disk
+    // /// </summary>
+    // /// <returns>FolderLogDto</returns>
+    // /// <response code="200">Success</response>
+    // /// <response code="401">If the user is unauthorized</response>
+    // [HttpPost]
+    // public async Task<ActionResult<FolderLogDto>> GetFolder(string request)
+    // {
+    //     var command = new GetFolderDataFromDiskCommand(FolderName: request);
+    //     var dto = await _mediator.Send(command);
+    //     return Ok(dto);
+    // }
     
     // /// <summary>
     // /// Get all departments list

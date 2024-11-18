@@ -10,13 +10,13 @@ namespace ComparerBasic.Logic.Commands
         string FileName
         ) : IRequest<SingleFileInfo>;
 
-    public class CreateSingleFileInfoHandler :
+    public class CreateSingleFileInfoCommandHandler :
         IRequestHandler<CreateSingleFileInfoCommand, SingleFileInfo>
     {
         // private readonly IGuidGenerator _guidGenerator;
         private readonly IComparerContext _dbContext;
         
-        public CreateSingleFileInfoHandler(IComparerContext dbContext)
+        public CreateSingleFileInfoCommandHandler(IComparerContext dbContext)
         {
             _dbContext = dbContext;
         }
