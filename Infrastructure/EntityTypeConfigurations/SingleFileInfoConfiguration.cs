@@ -11,6 +11,7 @@ internal class SingleFileInfoConfiguration : IEntityTypeConfiguration<SingleFile
         builder.ToTable(nameof(ComparerContext.SingleFileInfos));
         builder.HasKey(entity => entity.Id);
         builder.Property(entity => entity.Id).ValueGeneratedNever();
+        builder.Property(entity => entity.GroupId).ValueGeneratedNever();
         builder.Property(entity => entity.FileStatus).HasConversion<string>();
     }
 }

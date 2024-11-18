@@ -26,6 +26,11 @@ public class SingleFileInfo
     /// File status
     /// </summary>
     public FileStatuses FileStatus { get; set; }
+
+    /// <summary>
+    /// GroupId
+    /// </summary>
+    public Guid? GroupId { get; set; }
 }
 
 public enum FileStatuses

@@ -8,6 +8,6 @@ namespace ComparerBasic.Infrastructure;
 public interface IComparerContext
 {
     DbSet<SingleFileInfo> SingleFileInfos { get; }
-
+    
     Task<int> SaveChangesAsync(CancellationToken cancellationToken);
 }
