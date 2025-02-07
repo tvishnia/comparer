@@ -1,4 +1,4 @@
-﻿using System.Data;
+using System.Data;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
 using ComparerBasic.Domain;
@@ -42,7 +42,9 @@ namespace ComparerBasic.Logic.Commands
             var file= new FileInfo(request.FileName);
             if (!file.Exists)
             {
+
                 throw new FileNotFoundException("File does not exist: " + file.FullName);
+
             }
 
             var fileHash = GetHash(file);
