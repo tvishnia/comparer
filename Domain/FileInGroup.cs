@@ -15,7 +15,7 @@ public class FileInGroup
     /// <summary>
     /// FileId
     /// </summary>
-    public Guid FileId { get; init; } = string.Empty;
+    public Guid? FileId { get; init; }
 
     /// <summary>
     /// GroupId

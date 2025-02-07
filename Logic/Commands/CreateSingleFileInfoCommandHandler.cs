@@ -1,4 +1,6 @@
-﻿using System.Security.Cryptography;
+﻿using System.Data;
+using System.Runtime.CompilerServices;
+using System.Security.Cryptography;
 using ComparerBasic.Domain;
 using ComparerBasic.Infrastructure;
 using MediatR;
@@ -25,8 +27,7 @@ namespace ComparerBasic.Logic.Commands
         {
             if (String.IsNullOrEmpty(request.FileName))
             {
-                Console.WriteLine("File name should not be empty.");
-                return null;
+                throw new FileNotFoundException("File name should not be empty.");
             }
 
             var fileName = request.FileName.TrimStart();
@@ -35,15 +36,13 @@ namespace ComparerBasic.Logic.Commands
                 .FirstOrDefaultAsync(fileInfo => fileInfo.FileName.Equals(fileName), cancellationToken);
             if (exists != null)
             {
-                Console.WriteLine("File name already in database: " + fileName);
-                return null;
+                throw new DuplicateNameException("File name already in database: " + fileName);
             }
 
             var file= new FileInfo(request.FileName);
             if (!file.Exists)
             {
-                Console.WriteLine("File does not exist: " + file.FullName);
-                return null;
+                throw new FileNotFoundException("File does not exist: " + file.FullName);
             }
 
             var fileHash = GetHash(file);
