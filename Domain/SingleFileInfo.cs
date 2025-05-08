@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Security.Cryptography;
 
 namespace ComparerBasic.Domain;
 
@@ -20,7 +21,7 @@ public class SingleFileInfo
     /// <summary>
     /// Hash sum
     /// </summary>
-    public string? HashSum { get; init; }
+    public string? HashSum { get; set; }
 
     /// <summary>
     /// File status
@@ -31,6 +32,19 @@ public class SingleFileInfo
     /// GroupId
     /// </summary>
     public Guid? GroupId { get; set; }
+    
+    /// <summary>
+    /// Calculate hash (SHA256) for a given file
+    /// </summary>
+    /// <param name="file">FileInfo</param>
+    /// <returns></returns>
+    public bool SetHash()
+    {
+        var file = new FileInfo(FileName);
+        var sha256Hash = SHA256.Create();
+        HashSum = BitConverter.ToString(sha256Hash.ComputeHash(file.OpenRead()));
+        return true;
+    }
 }
 
 public enum FileStatuses

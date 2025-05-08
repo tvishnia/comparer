@@ -25,7 +25,7 @@ public class ComparerController : ControllerBase
     /// </summary>
     /// <returns>Result</returns>
     /// <response code="200">Success</response>
-    [HttpGet]
+    [HttpGet("/TwoFiles")]
     public async Task<ActionResult<bool>> CompareTwoFiles ([FromQuery(Name = "FileName1")]string fileName1, [FromQuery(Name = "FileName2")] string fileName2)
     {
         var result = false;
@@ -34,6 +34,18 @@ public class ComparerController : ControllerBase
             FileName2: fileName2
         );
         result = await _mediator.Send(query);
+        return Ok(result);
+    }
+    
+    /// <summary>
+    /// Compares files in folders one to one
+    /// </summary>
+    /// <returns>Result</returns>
+    /// <response code="200">Success</response>
+    [HttpPost("/FilesInFolders")]
+    public async Task<ActionResult<List<GroupOfEquals>>> CompareFilesInFolders ([FromQuery]CompareFilesInFoldersQuery query)
+    {
+        var result = await _mediator.Send(query);
         return Ok(result);
     }
     

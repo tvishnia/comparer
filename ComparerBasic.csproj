@@ -10,11 +10,21 @@
         <PackageReference Include="MediatR" Version="12.0.1" />
         <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="7.0.4" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+        <PackageReference Include="xunit" Version="2.9.3" />
     </ItemGroup>
 
     <ItemGroup>
       <Folder Include="Migrations" />
       <Folder Include="Resources\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="Comparer.Tests\Usings.cs">
+        <Link>ComparerTests\Usings.cs</Link>
+      </Compile>
+      <Compile Update="Comparer.Tests\ComparerTest.cs">
+        <Link>ComparerTests\ComparerTest.cs</Link>
+      </Compile>
     </ItemGroup>
 
 </Project>
