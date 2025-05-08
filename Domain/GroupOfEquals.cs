@@ -3,9 +3,9 @@ using System;
 namespace ComparerBasic.Domain;
 
 /// <summary>
-/// FileInGroup
+/// A group or files with the same hashsum
 /// </summary>
-public class FileInGroup
+public class GroupOfEquals
 {
     /// <summary>
     /// Id
@@ -13,12 +13,12 @@ public class FileInGroup
     public Guid Id { get; init; }
 
     /// <summary>
-    /// FileId
+    /// Files
     /// </summary>
-    public Guid FileId { get; init; } = string.Empty;
-
+    public List<SingleFileInfo>? FileInfos { get; init; }
+    
     /// <summary>
-    /// GroupId
+    /// Hash sum
     /// </summary>
-    public Guid GroupId { get; init; }
+    public string? HashSum { get; init; }
 }

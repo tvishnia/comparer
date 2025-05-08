@@ -1,6 +1,6 @@
-namespace Files.Comparator;
+namespace ComparerBasic.Logic;
 
-public class FileComparer : IEqualityComparer<FileInfo>
+public class FileEqualityComparer : IEqualityComparer<FileInfo>
 {
     // compare two given files
     public bool Equals(FileInfo? file1, FileInfo? file2)
@@ -30,7 +30,7 @@ public class FileComparer : IEqualityComparer<FileInfo>
 
     public int GetHashCode(FileInfo obj)
     {
-        // don't need to read whole file as it's hash already been compared
+        // don't need to read whole file now
         return 1;
     }
 

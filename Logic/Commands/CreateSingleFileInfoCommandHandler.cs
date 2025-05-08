@@ -42,9 +42,7 @@ namespace ComparerBasic.Logic.Commands
             var file= new FileInfo(request.FileName);
             if (!file.Exists)
             {
-
                 throw new FileNotFoundException("File does not exist: " + file.FullName);
-
             }
 
             var fileHash = GetHash(file);
@@ -52,7 +50,7 @@ namespace ComparerBasic.Logic.Commands
             {
                 Id = Guid.NewGuid(),
                 FileName = request.FileName,
-                HashSum = fileHash, // change here
+                HashSum = fileHash, 
                 FileStatus = FileStatuses.Active
             };
             
