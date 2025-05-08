@@ -18,6 +18,7 @@ public class CompareFilesInFoldersQueryHandler : IRequestHandler<CompareFilesInF
     
     public async Task<List<GroupOfEquals>> Handle(CompareFilesInFoldersQuery request, CancellationToken cancellationToken)
     {
+        // ToDo: this needs tests!
         var filesGroups = new List<GroupOfEquals>();
         if (request.FolderNames.Count == 0)
         {
